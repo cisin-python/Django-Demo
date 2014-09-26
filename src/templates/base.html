@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>{% block title %}BasicApp{% endblock %}</title>
+  <!-- HTML5 shim IE8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="{% static 'js/html5shiv.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/excanvas.js' %}"></script>
+
+  <![endif]-->
+
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap-responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'flatstrap/css/flatstrap.css' %}" rel="stylesheet">
+    <!--  Respond.js IE7/8 support of media queries (should be included AFTER css files) -->
+    <!--[if lt IE 9]>
+    <link href="{% static 'css/ie.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+
+  <script type="text/javascript" src="{% static 'jquery/jquery-1.9.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'jquery/parsley.js' %}"></script>
+  
+  <!--<script src="{% static 'jquery-ui/jquery-ui-1.10.3.js' %}"></script>-->
+  <!--<script src="{% static 'js/jquery.ui.touch-punch.min.js' %}"></script>-->
+  {% block header_js %}{% endblock %}
+
+</head>
+
+<body>
+<div class="messages">
+{% if messages %}
+    {% for message in messages %}
+    <div class='alert alert-{% if message.tags %}{{ message.tags }}{% endif %}'>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+</div>
+
+<h3>{% block page_title %}{% endblock %}</h3>
+{% block page %}{% endblock %}
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".messages").animate({
+        opacity: 0.0,
+        top: "+=50"
+       }, 6000, function() {
+    });
+  });
+</script>
+</body>
+</html>

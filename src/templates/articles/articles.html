@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block page %}
+    <a href="{% url 'social_article_create' %}" class="btn btn-primary "><strong>Add Article</strong></a>
+    <table id="article-table" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>article_type</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr >
+                <td><a href="{% url 'social_article_comments' article.id %}"><strong>{{ article.title }}</strong></a></td>
+                <td>{{ article.description }}</td>
+                <td>{{ article.article_type }}</td>
+                <td>{{ article.created_at }}</td>
+            <td>
+                <a href="{% url 'social_article_edit' article.id %}"><i class="icon-pencil"></i></a>
+                <a href="{% url 'social_article_update' article.id %}" class="delete-article"><i class="icon-trash"></i></a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+   
+{% endblock %}

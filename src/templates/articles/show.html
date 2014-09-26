@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block page %}
+
+                <p>Title: {{ article.title }}</p> 
+                <p>Description:{{ article.description }}</p>
+                <p>Article Type:{{ article.article_type }}</p>
+                <p> Date:{{ article.created_at }}</p>
+                <p>
+                    <a href="#" class="btn btn-success">Add Comment</a>
+                    <a href="{% url 'social_articles' %}" class="btn">Back</a>
+                </p>
+           
+{% endblock %}

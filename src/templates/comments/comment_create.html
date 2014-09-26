@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+	{% if edit %}
+		Add Comment
+	{% else %}
+		Edit Comment 
+	{% endif %}
+{% endblock %}
+
+
+{% block page %}
+
+
+<div class="well">
+
+    {% crispy form %}
+
+</div>
+
+{% endblock %}
